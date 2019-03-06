@@ -5,3 +5,11 @@ CFLAGS-s_llrint.c += -fno-builtin-lrintf -fno-builtin-llrintf
 # Same as before but for lroundf and llroundf
 CFLAGS-s_llround.c += -fno-builtin-lroundf -fno-builtin-llroundf
 endif
+
+ifeq ($(subdir),mathvec)
+libmvec-support += vec_finite_alias
+
+CFLAGS-vec_finite_alias.c += -mvsx
+
+libmvec-static-only-routines = vec_finite_alias
+endif
